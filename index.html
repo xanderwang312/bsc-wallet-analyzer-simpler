@@ -825,11 +825,11 @@
         </div>
 
         <div class="collapsible-section">
-            <div class="section-header">
+            <div class="section-header expanded">
                 <h3>代币价格配置</h3>
                 <span class="arrow">▼</span>
             </div>
-            <div class="section-content">
+            <div class="section-content expanded">
                 <div class="api-key-section">
                     <h4>BSCScan API Key:</h4>
                     <input type="text" id="api-key-input" placeholder="输入BSCScan API Key" value="U1QBT65D7URVZKZQNGI78AQN28STCU8AQ4">
@@ -848,11 +848,11 @@
 
         <div class="results" id="results">
             <div class="collapsible-section" id="summary">
-                <div class="section-header">
+                <div class="section-header expanded">
                     <h3>交易统计摘要</h3>
                     <span class="arrow">▼</span>
                 </div>
-                <div class="section-content">
+                <div class="section-content expanded">
                     <div class="summary-item">
                         <span>与目标合约的交易数量:</span>
                         <span id="target-contract-count">0</span>
@@ -1657,6 +1657,12 @@
                                     总流出价值: ${dailyOutflowValue.toFixed(2)} USD (+ ${1 + Math.floor(Math.log2(dailyOutflowValue))} Point)
                                 </span>
                             `;
+
+                            headerContent += `
+                                <span class="token-badge value">
+                                    2倍总交易量: ${(dailyOutflowValue * 2) .toFixed(2)} USD
+                                </span>
+                            `;
                         }
 
                         headerContent += `</div>`;
@@ -1926,8 +1932,24 @@
             // 监听哈希变化
             window.addEventListener('hashchange', handleUrlHash);
         });
-    </script>
-<!-- Cloudflare Pages Analytics --><script defer="" src="./BSC交易分析器_files/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;bf5bf25a2ba4460498f2ac6f7dfa8ca5&quot;}"></script><!-- Cloudflare Pages Analytics --><script defer="" src="./BSC交易分析器_files/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;944c8945eee3553c&quot;,&quot;version&quot;:&quot;2025.4.0-1-g37f21b1&quot;,&quot;r&quot;:1,&quot;token&quot;:&quot;c2bf6a494b08481c946e8196424d7a18&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfEdge&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfL4&quot;:true,&quot;cfSpeedBrain&quot;:true,&quot;cfCacheStatus&quot;:true}}}" crossorigin="anonymous"></script>
+        // 初始化可折叠部分
+    document.querySelectorAll(".section-header").forEach(header => {
+        header.addEventListener("click", function() {
+            this.classList.toggle("expanded");
+            const content = this.nextElementSibling;
+            content.classList.toggle("expanded");
+        });
+    });
+</script>
+<!-- Cloudflare Pages Analytics --><script defer="" src="./BSC交易分析器_files/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;bf5bf25a2ba4460498f2ac6f7dfa8ca5&quot;}">    // 初始化可折叠部分
+    document.querySelectorAll(".section-header").forEach(header => {
+        header.addEventListener("click", function() {
+            this.classList.toggle("expanded");
+            const content = this.nextElementSibling;
+            content.classList.toggle("expanded");
+        });
+    });
+</script><!-- Cloudflare Pages Analytics --><script defer="" src="./BSC交易分析器_files/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon="{&quot;rayId&quot;:&quot;944c8945eee3553c&quot;,&quot;version&quot;:&quot;2025.4.0-1-g37f21b1&quot;,&quot;r&quot;:1,&quot;token&quot;:&quot;c2bf6a494b08481c946e8196424d7a18&quot;,&quot;serverTiming&quot;:{&quot;name&quot;:{&quot;cfExtPri&quot;:true,&quot;cfEdge&quot;:true,&quot;cfOrigin&quot;:true,&quot;cfL4&quot;:true,&quot;cfSpeedBrain&quot;:true,&quot;cfCacheStatus&quot;:true}}}" crossorigin="anonymous"></script>
 
 
 <div><template shadowrootmode="closed"><div></div><main class="scam-dialog"></main></template></div></body><div id="immersive-translate-popup" style="all: initial"><template shadowrootmode="open"><style>@charset "UTF-8";
