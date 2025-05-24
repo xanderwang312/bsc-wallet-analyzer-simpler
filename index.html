@@ -832,7 +832,7 @@
             <div class="section-content">
                 <div class="api-key-section">
                     <h4>BSCScan API Key:</h4>
-                    <input type="text" id="api-key-input" placeholder="输入BSCScan API Key" value="M5EB4HPWR2GNI9Q2K7BAMDFMKW6G1GIVA6">
+                    <input type="text" id="api-key-input" placeholder="输入BSCScan API Key" value="U1QBT65D7URVZKZQNGI78AQN28STCU8AQ4">
                 </div>
                 <h4>代币价格（JSON格式：{代币地址:价格}或{代币符号:价格}）</h4>
                 <textarea id="token-price-input" class="token-price-input" placeholder="例如: {&quot;0x123abc...&quot;:&quot;2.5&quot;, &quot;BNB&quot;:&quot;300&quot;, &quot;USDT&quot;:&quot;1&quot;}">{"USDC":"1","BNB":"600","BSC-USD":"1"}</textarea>
@@ -1104,7 +1104,7 @@
             // 从BSCScan API获取交易
             async function fetchTransactions(address, action) {
                 try {
-                    const apiKey = apiKeyInput.value.trim() || 'M5EB4HPWR2GNI9Q2K7BAMDFMKW6G1GIVA6';
+                    const apiKey = apiKeyInput.value.trim() || 'U1QBT65D7URVZKZQNGI78AQN28STCU8AQ4';
                     const url = `${BSC_SCAN_API_URL}?module=account&action=${action}&address=${address}&startblock=0&endblock=99999999&sort=desc&apikey=${apiKey}`;
 
                     const response = await fetch(url);
